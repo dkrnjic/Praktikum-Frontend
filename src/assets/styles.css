@@ -1,0 +1,48 @@
+
+.panel {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 50px 0;
+    min-width: 400px;
+    max-width: 500px;
+    font-size: 18px;
+  }
+  .titlePanel{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .panel h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .sectionContainer{
+    margin: 15px;
+  }
+
+  .panel label {
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 20px;
+
+  }
+  #submitDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  #submitBtn{
+    
+    width: 90%;
+    height: 40px;
+  }
+  input{
+    margin-left: 20px;
+  }
+  
+  

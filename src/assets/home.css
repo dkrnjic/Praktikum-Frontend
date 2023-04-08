@@ -1,0 +1,51 @@
+.nav-wrapper{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(143, 137, 137);
+    height: 6vh;
+    border: 1px solid rgb(78, 74, 74);
+}
+.container2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.djeca{
+    margin: 0 20px;
+    width: 20%;
+    background-color:   #212529;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.linkClass{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    
+}
+.linkClass:hover{
+    background-color: #4b4e51;
+    color: #fff;
+}
+
+.logoutBtn{
+    margin: 20px;
+    width: 70px;
+    height: 70px;
+    background-color:   #212529;
+    display: flex;
+    float: right;
+    justify-content: flex-end;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    position: absolute; bottom: 0; right: 0;
+}
