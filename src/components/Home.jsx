@@ -5,6 +5,11 @@ import Panel2 from './Panel2';
 import Panel3 from './Panel3';
 import Panel4 from './Panel4';
 import Panel5 from './Panel5';
+import GrainTable from './GrainTable';
+import Farmeri from './Farmeri';
+import Kupci from './Kupci';
+import Otkup from './Otkup';
+import Prodaja from './Prodaja';
 //import { useHistory } from 'react-router-dom';
 
 const Home = () => {
@@ -14,7 +19,7 @@ const Home = () => {
     setActivePanel(index);
   };
 
-  const panels = [Panel, Panel2, Panel3, Panel4, Panel5];
+  const panels = [Farmeri, Kupci, Otkup, Prodaja, GrainTable];
   return (
     <div>
       <nav>
