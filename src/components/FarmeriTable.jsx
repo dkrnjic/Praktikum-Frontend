@@ -1,39 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../assets/table.css';
 
 const FarmeriTable = () => {
+  const [data, setData] = useState([]);
+  let i= 1;
+  useEffect(() => {
+    i= 1;
+    fetch('http://localhost:3000/farmers')
+      .then(response => response.json())
+      .then(data => {
+        setData(data);
+      });
+  }, []);
+
+  console.log(data);
+
   return (
     <div className='holder'>
-     
       <div className="grain-table">
-        <div className="row">
+        <div className="row1">
           <div className="cell">ID</div>
           <div className="cell">Ime</div>
           <div className="cell">Prezime</div>
           <div className="cell">Adresa</div>
           <div className="cell">Dug</div>
         </div>
-        <div className="row">
-          <div className="cell">1</div>
-          <div className="cell">Steva</div>
-          <div className="cell">Hundrić</div>
-          <div className="cell">Br Radića 100</div>
-          <div className="cell">€444</div>
-        </div>
-        <div className="row">
-          <div className="cell">2</div>
-          <div className="cell">Zdenko</div>
-          <div className="cell">Raničić</div>
-          <div className="cell">Zrinska 20</div>
-          <div className="cell">€100</div>
-        </div>
-        <div className="row">
-          <div className="cell">3</div>
-          <div className="cell">Ljutaga</div>
-          <div className="cell">Grbavac</div>
-          <div className="cell">Kolodvorska 44</div>
-          <div className="cell">€234</div>
-        </div>
+        {data.map(farmer => (
+          <div className="row1" key={farmer.id}>
+            <div className="cell">{i++}</div>
+            <div className="cell">{farmer.ime}</div>
+            <div className="cell">{farmer.prezime}</div>
+            <div className="cell">{farmer.address}</div>
+            <div className="cell">{farmer.debt}</div>
+          </div>
+        ))}
       </div>
     </div>
   );

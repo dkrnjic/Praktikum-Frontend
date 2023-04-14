@@ -1,39 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../assets/table.css';
 
 const KupciTable = () => {
+  const [data, setData] = useState([]);
+  let i= 1;
+  useEffect(() => {
+    i= 1;
+    fetch('http://localhost:3000/klijenti')
+      .then(response => response.json())
+      .then(data => {
+        setData(data);
+      });
+  }, []);
+  console.log(data);
   return (
     <div className='holder'>
      
       <div className="grain-table">
-        <div className="row">
+        <div className="row1 test11">
           <div className="cell">ID</div>
           <div className="cell">Ime</div>
           <div className="cell">Prezime</div>
           <div className="cell">Adresa</div>
           <div className="cell">Kupljeno</div>
         </div>
-        <div className="row">
-          <div className="cell">1</div>
-          <div className="cell">Martin</div>
-          <div className="cell">Savić</div>
-          <div className="cell">Monte Cappellette 50</div>
-          <div className="cell">€444</div>
-        </div>
-        <div className="row">
-          <div className="cell">2</div>
-          <div className="cell">Mirko</div>
-          <div className="cell">Dizdar</div>
-          <div className="cell">Zrinska 22</div>
-          <div className="cell">€400</div>
-        </div>
-        <div className="row">
-          <div className="cell">3</div>
-          <div className="cell">Netko</div>
-          <div className="cell">Polarić</div>
-          <div className="cell">Ulica neka 85</div>
-          <div className="cell">€574</div>
-        </div>
+        {data.map(klijent => (
+          <div className="row1" key={klijent.id}>
+            <div className="cell">{i++}</div>
+            <div className="cell">{klijent.ime}</div>
+            <div className="cell">{klijent.prezime}</div>
+            <div className="cell">{klijent.address}</div>
+            <div className="cell">{klijent.bought}</div>
+          </div>
+        ))}
       </div>
     </div>
   );

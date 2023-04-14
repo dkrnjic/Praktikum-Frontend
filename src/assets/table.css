@@ -10,11 +10,11 @@
   }
 
   
-  .row {
+  .row1 {
     display: flex;
     flex-direction: row;
   }  
-  .row:first-child{
+  .row1:first-child{
     font-weight: bold;
   }
   .cell {
@@ -31,10 +31,10 @@
     font-weight: bold;
   }
 
-  .row:nth-child(even) {
+  .row1:nth-child(even) {
     background-color: #f2f2f2;
   }
   
-  .row:hover {
+  .row1:hover {
     background-color: #ddd;
   }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import '../assets/login.css';
 
 function LoginForm() {
   const [email, setEmail] = useState('');
@@ -44,10 +44,10 @@ function LoginForm() {
   return (
     <section className="vh-100" style={{ backgroundImage: "url('/background.jpg')"  }}>
       <div className="container py-5 h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">
+        <div className="row d-flex justify-content-center align-items-center h-100" style={{all: "unset"}}>
           <div className="col col-xl-10">
             <div className="card" style={{ borderRadius: "1rem" }}>
-              <div className="row g-0">
+              <div className="row g-0" style={{}} >
                 <div className="col-md-6 col-lg-5 d-none d-md-block" >
                   <img
                     src='src/farmer.jpg'

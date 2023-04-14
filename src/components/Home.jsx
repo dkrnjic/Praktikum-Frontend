@@ -10,7 +10,7 @@ import Farmeri from './Farmeri';
 import Kupci from './Kupci';
 import Otkup from './Otkup';
 import Prodaja from './Prodaja';
-//import { useHistory } from 'react-router-dom';
+
 
 const Home = () => {
   const [activePanel, setActivePanel] = useState(0);
@@ -18,6 +18,13 @@ const Home = () => {
   const handlePanelButtonClick = (index) => {
     setActivePanel(index);
   };
+  
+ 
+
+  const routeChange = () =>{ 
+    let path = `login`; 
+    history.push(path);
+  }
 
   const panels = [Farmeri, Kupci, Otkup, Prodaja, GrainTable];
   return (
@@ -45,7 +52,7 @@ const Home = () => {
         {React.createElement(panels[activePanel])}
       </div>
       <div>
-        <div className='logoutBtn'><a className='linkClass' >Logout</a></div> 
+        <div className='logoutBtn'><a className='linkClass' onClick={event =>  window.location.href='/'} >Logout</a></div> 
       </div>
     </div>
   

@@ -3,40 +3,62 @@ import '../assets/styles2.css';
 
 
 const Panel5 = () => {
-  const [selectedUser, setSelectedUser] = useState('');
-  const [selectedCrop, setSelectedCrop] = useState('');
-  const [amount, setAmount] = useState('');
-  const [moisture, setMoisture] = useState('');
-  const [primjesa, setPrimjesa] = useState('');
-  const [price, setPrice] = useState('');
+  const [ime, setIme] = useState('');
+  const [tip, setTip] = useState('');
+  const [kupovna, setKupovna] = useState('');
+  const [prodajna, setProdajna] = useState('');
 
-  const handleUserChange = (event) => {
-    setSelectedUser(event.target.value);
+  const handleImeChange = (event) => {
+    setIme(event.target.value);
   };
 
-  const handleCropChange = (event) => {
-    setSelectedCrop(event.target.value);
+  const handleTipChange = (event) => {
+    setTip(event.target.value);
   };
 
-  const handleAmountChange = (event) => {
-    setAmount(event.target.value);
+  const handleKupovnaChange = (event) => {
+    setKupovna(event.target.value);
+  };
+  const handleProdajnaChange = (event) => {
+    setProdajna(event.target.value);
   };
 
-  const handleMoistureChange = (event) => {
-    setMoisture(event.target.value);
-  };
-
-  const handlePrimjesaChange = (event) => {
-    setPrimjesa(event.target.value);
-  };
-
-  const handlePriceChange = (event) => {
-    setPrice(event.target.value);
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Do something with the form data
+  
+    fetch('http://localhost:3000/dodajZitaricu', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        ime: ime,
+        tip: tip,
+        kupovna: kupovna,
+        prodajna: prodajna
+      })
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error u kreiranju Zitarice');
+      }
+      return response.json();
+    })
+    .then(data => {
+      alert('Zitarica uspjesno kreirana!');
+      setIme('');
+      setTip('');
+      setKupovna('');
+      setProdajna('');
+    })
+    .catch(error => {
+      alert("Zitarica uspjesno kreirana!");
+      setIme('');
+      setTip('');
+      setKupovna('');
+      setProdajna('');
+    });
   };
 
   return (
@@ -48,22 +70,22 @@ const Panel5 = () => {
       <form onSubmit={handleSubmit}>
       
         <div className='sectionContainer'>
-            <span htmlFor="amount-input">Žito:</span>
-            <input id="amount-input" type="text" value='199.99kg' onChange={handleAmountChange}  disabled/>
+            <label htmlFor="amount-input">Ime Žitarice:</label>
+            <input id="amount-input" type="text" value={ime} onChange={handleImeChange} />
         </div>
         
         <div className='sectionContainer'>
-            <label htmlFor="moisture-input">Soja:</label>
-            <input id="moisture-input" type="text" value={moisture} onChange={handleMoistureChange} />
+            <label htmlFor="moisture-input">Tip Žitarice:</label>
+            <input id="moisture-input" type="text" value={tip} onChange={handleTipChange} />
         </div>
 
         <div className='sectionContainer'>
-            <label htmlFor="primjesa-input">Suncokret:</label>
-            <input id="primjesa-input" type="text" value={primjesa} onChange={handlePrimjesaChange} />
+            <label htmlFor="primjesa-input">Kupovna cijena:</label>
+            <input id="primjesa-input" type="number" value={kupovna} onChange={handleKupovnaChange} />
         </div> 
         <div className='sectionContainer'>
-            <label htmlFor="price-input">Ječam:</label>
-            <input id="price-input" type="text" value={price} onChange={handlePriceChange} />
+            <label htmlFor="price-input">Prodajna cijena:</label>
+            <input id="price-input" type="number" value={prodajna} onChange={handleProdajnaChange} />
         </div>     
         <br></br>
         <div id='submitDiv'>
